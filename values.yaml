@@ -1,0 +1,9 @@
+oidcmock:
+  enabled: true
+  replicas: 1
+  template:
+    metadata:
+    podAnnotations: []
+    labels: []
+
+  image: ghcr.io/soluto/oidc-server-mock:latest
