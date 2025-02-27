@@ -1,9 +1,21 @@
-oidcmock:
-  enabled: true
-  replicas: 1
-  template:
-    metadata:
-    podAnnotations: []
-    labels: []
+enabled: true
+replicas: 1
+template:
+  podAnnotations: []
+  labels: []
+image:
+  image: ghcr.io/soluto/oidc-server-mock
+  imagePullPolicy: Always
+  port: 80
 
-  image: ghcr.io/soluto/oidc-server-mock:latest
+resources:
+  requests:
+    cpu: 500m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+
+nodeSelector: []
+affinity: []
+tolerations: []

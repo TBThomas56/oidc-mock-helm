@@ -12,7 +12,7 @@ spec:
     {{- include "common.labels.matchLabels" $ | nindent 4 }}
   ports:
     - name: {{ include "common.names.fullname" $ }}
-      port: {{ $.Values.dbPort }}
-      targetPort: {{ $.Values.dbPort }}
+      port: {{ $.Values.image.port }}
+      targetPort: {{ $.Values.image.port }}
       protocol: TCP
 {{- end }}
