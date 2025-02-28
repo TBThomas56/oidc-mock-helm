@@ -28,17 +28,13 @@ spec:
           ports:
             - name: oidc-port
               protocol: TCP
-              targetPort: {{ $.Values.image.port }}
               containerPort: {{ $.Values.image.port }}
           resources:
             {{- $.Values.resources | toYaml | nindent 12 }}
+          {{- with $.Values.env }}
           env:
-            - name: env
-              value:
-                valueFrom:
-                  configMapKeyRef:
-                    name: oidc-mock-configmap
-                    key: env
+            {{- . | toYaml | nindent 12 }}
+          {{- end }}
           {{- with $.Values.nodeSelector }}
           nodeSelector:
             {{- . | toYaml | nindent 10 }}
